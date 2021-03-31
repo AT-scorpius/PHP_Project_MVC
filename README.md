@@ -1,5 +1,5 @@
 Các chức năng cơ bản của đồ án
-
+Yêu cầu: Sử dụng hướng đối tượng
 Admin: 
 - Thêm sửa xóa sản phẩm,
 - Sửa xóa User, 
