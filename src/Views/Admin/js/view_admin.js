@@ -1,6 +1,6 @@
 /* Demo purposes only */
 $(".hover").mouseleave(
-    function () {
+    function() {
         $(this).removeClass("hover");
     }
 );
