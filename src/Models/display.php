@@ -1,4 +1,4 @@
-<?php require 'ClassProduct.php';
+<?php require 'product.php';
 $pro= new Product();
 $arr="";
 $b='';?>
