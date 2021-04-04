@@ -1,21 +1,22 @@
 <?php
 
 class ConnectDataBase{
-    public $databasename;
-    public $connect;
-
-    //Tao constructor
-    function __construct($databasename){
-        $this->databasename= $databasename;
-        $this->connect= mysqli_connect('localhost', 'root', '', $this->databasename);
+    public  $server='localhost';
+    public  $user='root';
+    public  $pass = '';
+    public  $dbname='php_project';
+  
+    public  $connect;
+    public function ConnectDataBase()
+    {
+        $this->connect= mysqli_connect($this->server, $this->user, $this->pass, $this->dbname);
     }
-
-    //ham thuc thuc hien cau lenh truy van
-    public function query($sql){
-        $result = mysqli_query($this->connect, $sql);
-        return $result;
-    }
-
-}
+    public function query($sql)
+    {
+        $this->connect= mysqli_connect($this->server, $this->user, $this->pass, $this->dbname);
+        $ketqua =  mysqli_query($this->connect, $sql);
+        return $ketqua;
+        
+    }}
 ?>
     

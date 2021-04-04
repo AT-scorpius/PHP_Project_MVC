@@ -121,11 +121,11 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Functions Manage<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class="fa fa-dashboard fa-fw" onclick="showProduct()">
+                                    <a href="http://localhost/Tuan_Branch/PHP_Project_MVC/src/Views/Admin/product_manage_view.php"><i class='fa fa-dashboard fa-fw'">
                                         </i>Product Management</a></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-dashboard fa-fw" onclick="showUser()">
+                                    <a href="http://localhost/Tuan_Branch/PHP_Project_MVC/src/Views/Admin/user_manage_view.php"><i class="fa fa-dashboard fa-fw" onclick="showUser()">
                                         </i>User Management</a>
                                     <!-- <ul class="nav nav-third-level">
                                     <li>
@@ -142,7 +142,7 @@
         </nav>
 
         <!-- Page Content -->
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-image: url('image/b-g.jpg'); background-repeat: no-repeat;">
             <h1 style="color: blue; text-align: center;">Welcome To Admin Home Page</h1>
             <div class="product-manage" id="show-product">
                 <div class="container">
