@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+// Start the session
+session_start();
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body style="background-image: url('image/b-g.jpg'); background-repeat: no-repeat;">
@@ -21,8 +26,13 @@
     <div class="form-search">
         <nav class="navbar navbar-light ">
             <form class="form-inline" method="POST">
-                <input class="form-control mr-sm-2" type="text" placeholder="Enter product's name..." aria-label="Search" name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="btn_search">Search</button>
+                <div class="form-group">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Enter product's name..." aria-label="Search" name="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="btn_search">Search</button>
+                </div>
+
+                <button class="btn-home"><i class="fas fa-home"></i> <a href="admin.php">Home</a></button>
+
 
             </form>
 
@@ -33,15 +43,11 @@
     <div class="list-manage">
         <div class="form-create">
 
-            <button class="btn-home"> <a href="admin.php"> <i class="fas fa-home"></i> Home</a></button>
-
-            <button class="btn btn-primary" data-toggle="modal" data-target="#create-modal"> Create</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#create-product"> Create</button>
 
         </div>
     </div>
     <!-- Modal -->
-
-
     <div class="content">
         <!-- Button trigger modal -->
         <table class="table table-striped show_user">
@@ -105,7 +111,7 @@
                 if (isset($_POST['btn_search'])) {
 
                     if ($_POST['search'] == '') {
-                        echo "<script>document.getElementById('error_search').innerHTML='Please fill here to search!'</script>";
+                        echo "<script>documenment.getEletById('error_search').innerHTML='Please fill here to search!'</script>";
                     } else {
                         $key = $_POST['search'];
                         $result = searchProduct($key);
@@ -138,20 +144,29 @@
 
                         <td>
                             <div class="form_group">
-                                <button name="btn_detail" class="btn_detail"> Detail</button>
+                                <button name="btn_detail" class="btn_detail" data-toggle="modal" data-target="#detail-product">
+                                    See more
+                                    <?php $_SESSION['id_product'] = $product['id_product']; ?>
+                                </button>
                             </div>
                         </td>
 
 
                         <td>
-                            <div class="form_group">
-                                <button name="btn_delete" class="btn_delete"> Delete</button>
+                        <div class="form_group">
+                                <button name="btn_delete" class="btn_delete" data-toggle="modal" data-target="#delete-product">
+                                    Delete
+                                    <?php $_SESSION['id_product'] = $product['id_product']; ?>
+                                </button>
                             </div>
                         </td>
 
                         <td>
-                            <div class="form_group">
-                                <button name="btn_update" class="btn_update"> Update</button>
+                        <div class="form_group">
+                                <button name="btn_update" class="btn_update" data-toggle="modal" data-target="#update-product">
+                                    Update
+                                    <?php $_SESSION['id_product'] = $product['id_product']; ?>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -193,7 +208,7 @@
     </div>
 
 
-    <div class="modal fade" id="create-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLable1" aria-hidden="true">
+    <div class="modal fade" id="create-product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLable1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -256,12 +271,9 @@
     </div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-    </button>
 
     <!-- Modal Detail Product -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detail-product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -271,21 +283,31 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <!-- Hiển thị bản size giá và số lượng còn lại -->
+                            <!-- <?php
+                      
+                            $id = $_SESSION['id_product'];
+                            $query = "select * from PRODUCT_SIZE where $id =id_product";
+                            $result =  $GLOBALS['connect']->query($query);
+                            echo "afjlsgflksgfsdghd";
+                            while ($product = mysqli_fetch_array($result)) {
+                                
+                                echo $product['id_product_size'];
+                            }
 
-                    <div class="display_size">
-
-                    </div>
-
-
+                            ?> -->
+        
+                            sjdgnsdzlvdssssssssssssssssssssssc
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Button trigger modal -->
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

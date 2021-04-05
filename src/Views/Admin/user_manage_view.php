@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-  require_once '../../Models/connect.php';
-  require_once '../../Controller/Admin/funtions_admin.php';
-  $GLOBALS['connect']  = new ConnectDataBase();
+<?php
+require_once '../../Models/connect.php';
+require_once '../../Controller/Admin/funtions_admin.php';
+$GLOBALS['connect']  = new ConnectDataBase();
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,25 +28,14 @@
             <form class="form-inline" method="POST">
                 <input class="form-control mr-sm-2" type="text" placeholder="Enter product's name..." aria-label="Search" name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="btn_search">Search</button>
-
+                <button class="btn-home"><i class="fas fa-home"></i> <a href="admin.php">Home</a></button>
             </form>
-           
+
         </nav>
         <p class="message" id="error_search"></p>
     </div>
     <div class="list-manage">
-    <button class="btn btn-primary" > <a href="admin.php">Home</a></button>
-
     </div>
-    <?php 
-    // Xử Lí button list manage
-        // if(isset($_POST['reload'])){
-
-        //    header("location:http://localhost/Tuan_Branch/PHP_Project_MVC/src/Views/Admin/user_manage_view.php");
-        // }
-    
-    ?>
-
 
     <div class="content">
         <table class="table table-striped show_user">
@@ -59,7 +49,7 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Balance</th>
-                    
+
                     <th>Delete <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
@@ -74,7 +64,7 @@
             <tbody>
                 <?php
 
-               
+
                 //Lấy số lượng danh Sách 
                 $query = "select count(id_user) as total from USERS";
                 $result =  $GLOBALS['connect']->query($query);
@@ -111,15 +101,14 @@
                     } else {
                         $key = $_POST['search'];
                         $result = searchUserName($key);
-                        if(mysqli_num_rows($result)==0){
+                        if (mysqli_num_rows($result) == 0) {
                             echo "<script>document.getElementById('error_search').innerHTML='No results found!'</script>";
                             $total_records = mysqli_num_rows($result);
                             $total_page = ceil($total_records / $limit);
-                        }else{
+                        } else {
                             $total_records = mysqli_num_rows($result);
                             $total_page = ceil($total_records / $limit);
                         }
-                 
                     }
                 }
                 while ($users = mysqli_fetch_array($result)) {
@@ -129,32 +118,31 @@
                             echo $users['id_user'] ?></td>
                         <td><strong><?php echo $users['user_name'] ?></strong></td>
                         <td><?php
-                           echo $users['full_name'] 
-                          ?></td>
+                            echo $users['full_name']
+                            ?></td>
                         <td><?php echo $users['passwords']  ?></td>
                         <td><?php echo $users['email']  ?></td>
                         <td><?php echo $users['phone']  ?></td>
                         <td><?php echo $users['address']  ?></td>
                         <td><?php echo $users['balance']  ?></td>
-                       
-                        
 
-                        <td><?php 
-                            if($users['id_user']==1){
+
+
+                        <td><?php
+                            if ($users['id_user'] == 1) {
                                 echo "<strong style='color: #f7544a;'>Deletion is not allowed!</strong>";
-                            }else{
-                           ?><div class="form_group">
-                                    <button name="btn_delete" class="btn_delete" id="delete_user"
-                                    data-toggle="modal" data-target="#deleteUser"> 
-                                    <?php
-                             echo '<a  href="user_manage_view.php?id_user=' . $id_user . '">Delete</a>  ';
-                                 
-                                    ?>
-                                </div>  
-                               
-                           
-                          <?php  } 
-                    ?></td>
+                            } else {
+                            ?><div class="form_group">
+                                    <button name="btn_delete" class="btn_delete" id="delete_user" data-toggle="modal" data-target="#deleteUser">
+                                        <?php
+                                        echo '<a  href="user_manage_view.php?id_user=' . $id_user . '">Delete</a>  ';
+
+                                        ?>
+                                </div>
+
+
+                            <?php  }
+                            ?></td>
                         <td>
                             <div class="form_group">
                                 <button name="btn_update" class="btn_update"> Update</button>
@@ -170,11 +158,11 @@
         </table>
         <?php
         // Thao Tác Với Dữ Liệu
-                //delete
-                if(isset($_POST['accept_delete'])){
-                    deleteUser($_GET['id_user']);
-                    header("Refresh: 2;"); 
-                }
+        //delete
+        if (isset($_POST['accept_delete'])) {
+            deleteUser($_GET['id_user']);
+            header("Refresh: 2;");
+        }
 
         ?>
         <!-- Phân trang -->
@@ -205,41 +193,42 @@
             }
             ?>
         </div>
+        <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Do you really want to delete this user?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="" method="post">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" name="accept_delete">Yes</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
 
 
 
-<!-- Modal -->
-   <!-- Modal Delete User -->
-<div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Do you really want to delete this user?
-      </div>
-      <div class="modal-footer" >
-          <form action="" method="post">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button  type="button" class="btn btn-primary" name="accept_delete">Yes</button>
-          </form>
-        
-      </div>
-    </div>
-  </div>
-</div>
+    <!-- Modal -->
+    <!-- Modal Delete User -->
+
     <!-- Modal Update User -->
-   
 
- 
-    
+
+
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
