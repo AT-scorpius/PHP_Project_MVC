@@ -10,122 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Management</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/user-product-manage.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        a {
-            direction: none;
-            color: orangered;
-        }
-
-        a:hover {
-            direction: none;
-            text-decoration: none;
-            color: #f0cfc8;
-        }
-
-        .search {
-            border: 1px solid orange;
-            border-radius: 10px;
-            background-color: wheat;
-            padding: 8px;
-        }
-
-        .form-search {
-            margin: 0 10% 2% 10%;
-        }
-
-        .content {
-            margin-left: 3%;
-            margin-right: 3%;
-        }
-
-        .btn_update {
-            border: orangered solid 1px;
-            background-color: #f0cfc8;
-            color: orangered;
-            border-radius: 3px;
-            padding: 5px;
-        }
-
-        .btn_update:hover {
-            background-color: orangered;
-            color: white;
-        }
-        .btn_delete{
-            border: orangered solid 1px;
-            background-color: #f0cfc8;
-            color: orangered;
-            border-radius: 3px;
-            padding: 5px;
-        }
-        .btn_delete:hover {
-            background-color: orangered;
-            color: white;
-        }
-        #error_search {
-            color: red;
-          
-            margin-left: 15px;
-        }
-
-
-        .mini-img {
-            width: 50px;
-            height: auto;
-        }
-
-        .form-create {
-            margin-left: 10%;
-            padding-bottom: 20px;
-        }
-
-        .pagination {
-            align-content: center;
-            align-items: center;
-            text-align: center;
-            align-content: center;
-            padding: 0px 10px 0px 10px;
-            text-decoration: none;
-            margin: 0 40% 5% 40%;
-        }
-
-        .pagination .click-page {
-            align-content: center;
-            border: 1px solid #f7544a;
-            text-decoration: none;
-            border-radius: 5px;
-            padding: 0px 10px 0px 10px;
-            margin-left: 5px;
-        }
-
-        .pagination .current-page {
-            align-content: center;
-            border: 1px solid #f7544a;
-            text-decoration: none;
-            padding: 0px 10px 0px 10px;
-            border-radius: 5px;
-            color: white;
-            background-color: #f7544a;
-            margin-left: 5px;
-        }
-        #reload{
-            
-        }
-        .list-manage{
-            border: #f7544a 1px solid;
-            margin-left: 15%;
-            margin-bottom: 5%;
-            margin-right:15%;
-            padding: 10px;
-            display: flex;
-           justify-content: space-evenly;
-        }
-    </style>
-</head>
 
 <body style="background-image: url('image/b-g.jpg'); background-repeat: no-repeat;">
 
@@ -145,9 +34,7 @@
         <p class="message" id="error_search"></p>
     </div>
     <div class="list-manage">
-        <!-- <form action="" method="post">
-        <button type="button" class="btn btn-outline-primary" id="reload" name="reload">Reload</button>
-        </form> -->
+    <button class="btn btn-primary" > <a href="admin.php">Home</a></button>
 
     </div>
     <?php 

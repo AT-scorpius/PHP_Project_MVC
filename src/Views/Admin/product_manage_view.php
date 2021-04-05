@@ -5,97 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Product Management</title>
+    <link rel="stylesheet" href="css/user-product-manage.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <style>
-        a {
-            direction: none;
-            color: blue;
-        }
-
-        a:hover {
-            color: rgb(81, 81, 243);
-        }
-
-        .search {
-            border: 1px solid orange;
-            border-radius: 10px;
-            background-color: wheat;
-            padding: 8px;
-        }
-
-        .form-search {
-            margin: 0 10% 2% 10%;
-        }
-
-        .content {
-            margin-left: 3%;
-            margin-right: 3%;
-        }
-
-        .btn_detail {
-            border: #008000 solid 1px;
-            background-color: #f0cfc8;
-            color: #008000;
-            border-radius: 3px;
-            padding: 5px;
-        }
-
-        .btn_detail:hover {
-            background-color: #008000;
-            color: #f0cfc8;
-        }
-
-        #error_search {
-            color: red;
-          
-            margin-left: 15px;
-        }
-
-        .mini-img {
-            width: 50px;
-            height: auto;
-        }
-
-        .form-create {
-            margin-left: 10%;
-            padding-bottom: 20px;
-        }
-
-        .pagination {
-            align-content: center;
-            align-items: center;
-            text-align: center;
-            align-content: center;
-            padding: 0px 10px 0px 10px;
-            text-decoration: none;
-            margin: 0 40% 5% 40%;
-        }
-
-        .pagination .click-page {
-            align-content: center;
-            border: 1px solid #f7544a;
-            text-decoration: none;
-            border-radius: 5px;
-            padding: 0px 10px 0px 10px;
-            margin-left: 5px;
-        }
-
-        .pagination .current-page {
-            align-content: center;
-            border: 1px solid #f7544a;
-            text-decoration: none;
-            padding: 0px 10px 0px 10px;
-            border-radius: 5px;
-            color: white;
-            background-color: #f7544a;
-            margin-left: 5px;
-        }
-      
-    </style>
 </head>
 
 <body style="background-image: url('image/b-g.jpg'); background-repeat: no-repeat;">
@@ -111,14 +25,18 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="btn_search">Search</button>
 
             </form>
-           
+
         </nav>
         <p class="message" id="error_search"></p>
 
     </div>
     <div class="list-manage">
         <div class="form-create">
+
+            <button class="btn-home"> <a href="admin.php"> <i class="fas fa-home"></i> Home</a></button>
+
             <button class="btn btn-primary" data-toggle="modal" data-target="#create-modal"> Create</button>
+
         </div>
     </div>
     <!-- Modal -->
@@ -191,11 +109,11 @@
                     } else {
                         $key = $_POST['search'];
                         $result = searchProduct($key);
-                        if(mysqli_num_rows($result)==0){
+                        if (mysqli_num_rows($result) == 0) {
                             $total_records = mysqli_num_rows($result);
                             $total_page = ceil($total_records / $limit);
                             echo "<script>document.getElementById('error_search').innerHTML='No results found!'</script>";
-                        }else{
+                        } else {
                             $total_records = mysqli_num_rows($result);
                             $total_page = ceil($total_records / $limit);
                         }
@@ -227,13 +145,13 @@
 
                         <td>
                             <div class="form_group">
-                                <button name="btn_detail" class="btn_detail"> Delete</button>
+                                <button name="btn_delete" class="btn_delete"> Delete</button>
                             </div>
                         </td>
 
                         <td>
                             <div class="form_group">
-                                <button name="btn_detail" class="btn_detail"> Update</button>
+                                <button name="btn_update" class="btn_update"> Update</button>
                             </div>
                         </td>
                     </tr>
@@ -355,7 +273,7 @@
                 <div class="modal-body">
 
                     <div class="display_size">
-                        
+
                     </div>
 
 
