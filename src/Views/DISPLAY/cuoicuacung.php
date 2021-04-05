@@ -1,4 +1,4 @@
-<?php require 'product.php';
+<?php require '../../Models/product.php';
 $pro= new Product();
 $arr="";
 $b='';?>
@@ -16,44 +16,38 @@ $b='';?>
     <meta name="author" content="" />
     <title>Bán gấu bông</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
-        crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+        crossorigin="anonymous" /> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <link rel="stylesheet" href="menu.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="menu.css"> -->
     <!-- <script src="./menu_new.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script></script> -->
 </head>
 
-
-<body> 
-    <form action="" method="post" >
+<form action="" method="post" >
     <div class="container-fluid ">
         <div id="menu-ngag">
             <ul class="nav nav-pills justify-content-center flex-column flex-md-row center" id="myPill" role="tablist">
-                <li class="nav-item active ">
-                   <button   type="submit" class=" btn btn-secondary btn-block" name="buffalo">  Buffalo</button>
-                </li>
-                <li class="nav-item nav-link ">
-                    
-                        <button  type="submit" class="nav-link  btn btn-secondary btn-block " name="tabteddy2"> Teddy </button>
-                  
-                </li>
-                <li class="nav-item nav-link">
-                   
-                <button type="submit"   class="  btn btn-secondary btn-block" name="cat">  Cat</button>
-                        
-                  
-                </li>
-                <li class="nav-item nav-link">
+            <li class="nav-item nav-link">
                 <button type="submit"   class="  btn btn-secondary btn-block" name="doreamon">  Doreamon</button>
                 </li>
+                <li class="nav-item active ">
+                   <button   type="submit" class=" btn btn-secondary btn-block" name="buffalo">  Buffalo</button>
+                </li>               
+                <li class="nav-item nav-link">                   
+                <button type="submit"   class="  btn btn-secondary btn-block" name="cat">  Cat</button>                 
+                </li>
+                <li class="nav-item nav-link ">              
+                        <button  type="submit" class="nav-link  btn btn-secondary btn-block " name="tabteddy2"> Teddy </button>                 
+                </li>
+                
                 <li class="nav-item nav-link">
                 <button type="submit" class="  btn btn-secondary btn-block" name="chicken">  Chicken </button>
                 </li>
@@ -129,8 +123,7 @@ $b='';?>
                                                </div>
                                           </div>
                                      </div>
-                        
-                                 
+                                                        
                         ";
                         
                         $ki.=$k;
