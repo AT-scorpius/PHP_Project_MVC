@@ -195,11 +195,16 @@ session_start();
         if(isset($_POST['update_product'])){
             if(isset($_SESSION['id_product_update'])){
                 $id=$_SESSION['id_product_update'];
-                $query="DELETE FROM PRODUCT WHERE id_product=$id;";
-                $GLOBALS['connect']->query($query);
-                $query="DELETE FROM PRODUCT_SIZE  WHERE id_product=$id;";
-                $GLOBALS['connect']->query($query);
-                // echo "<script>location.reload();</script>";
+                $type = $_POST['type_product'];
+                $name = $_POST['name_product'];
+                $size_product = $_POST['size_product'];
+                $price = $_POST['price'];
+                $img_1 = $_POST['img_1_upload'];
+                $img_2 = $_POST['img_2_upload'];
+                $img_3 = $_POST['img_3_upload'];
+                $des = $_POST['decription'];
+                $quantity = $_POST['quantity'];
+             
             }
         }
         
@@ -401,14 +406,12 @@ session_start();
                         <div class="col-12 mt-3">
                             <input class="form-control" type="text" name="decription" placeholder="Desciption">
                         </div>
+                        <button class="btn btn-outline-danger mt-3" type="submit" name="update_product" data-dismiss="modal">
+                        Update </button>    
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <form action="" method="post">
-                    <button class="btn btn-outline-danger mt-3" type="submit" name="update_product" data-dismiss="modal">
-                        Update </button>
-                    </form>
-                    
+                <div class="modal-footer">    
+                   
                 </div>
             </div>
         </div>
