@@ -22,6 +22,13 @@ function deleteUser($key)
       $GLOBALS['connect']->query($query);
    
 }
+function deleteProduct($key)
+{
+    $query = "DELETE FROM PRODUCT
+    WHERE id_product = $key";
+      $GLOBALS['connect']->query($query);
+   
+}
 function reload($page){
     header("Refresh: 2 ; url=$page");
 }
