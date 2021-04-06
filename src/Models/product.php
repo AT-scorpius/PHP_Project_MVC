@@ -32,10 +32,10 @@ class Product
      public function GetListTeddy()
      {
          $connect = new ConnectDataBase();
-         $sql='SELECT product.image1, product.like_product, product.name_product, product.id_product, product_size.price  
-             FROM product INNER JOIN product_size 
-             ON product.id_product = product_size.id_product 
-             WHERE id_type_product= 2 ';
+            $sql='SELECT product.image1, product.like_product, product.name_product, product.id_product, product_size.price  
+                FROM product INNER JOIN product_size 
+                ON product.id_product = product_size.id_product 
+                WHERE id_type_product= 2 and product_size.id_size = 1';
          return $connect->query($sql);
      }
      //list hết Mèo bông 

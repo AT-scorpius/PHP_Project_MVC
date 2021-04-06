@@ -81,9 +81,9 @@ $b = ''; ?>
                     <ul class="navbar-nav mr-auto">
                         <div class="form-inline my-2 my-lg-0">
                         <form action="" method="post">
-                        <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" >
+                            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" >
                             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="Ok"></input>
-                            </form>
+                        </form>
                            
                         </div>
                     </ul>
@@ -231,11 +231,11 @@ $b = ''; ?>
 
         <!-- tìm kiếm theo tên -->
         <?php
-                if (isset($_REQUEST['Ok'])) {
+                if (isset($_POST(['Ok']))) {
                     $search = $_POST['search'];
-                    if (empty($search)) {
-                        echo "<p style='color:blue'>Hãy nhập thông tin bạn muốn tìm vào ô 'search' nhé !</p>";
-                    } else {
+                    // if (empty($search)) {
+                    //     echo "<p style='color:blue'>Hãy nhập thông tin bạn muốn tìm vào ô 'search' nhé !</p>";
+                    // } else {
                         $arr = $pro->SearchListProduct($search);
                         // $num = mysql_num_rows($arr);
                         if (mysqli_num_rows($arr) > 0 ) {
@@ -275,7 +275,7 @@ $b = ''; ?>
                             echo "Không tìm thấy kết quả!";
                         }
                     }
-                }
+               
                 ?>
         </div>
 
