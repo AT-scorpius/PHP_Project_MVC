@@ -27,7 +27,7 @@
 
     <!-- Morris Charts CSS -->
     <link href="css/morris.css" rel="stylesheet">
-
+    <script src="js/function.js"></script>
     <!-- Custom Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
@@ -617,7 +617,7 @@
 
 
             //Lấy số lượng danh Sách 
-            $query = "select count(id_type_product) as total from SIZE";
+            $query = "select count(id_size) as total from SIZE";
             $result =  $GLOBALS['connect']->query($query);
             $row = mysqli_fetch_assoc($result);
             $total_records = $row['total'];

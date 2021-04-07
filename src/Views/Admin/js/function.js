@@ -1,12 +1,15 @@
 showProduct = () => {
     document.getElementById("show-product").style.display = "block";
     document.getElementById("show-user").style.display = "none";
-    console.log("show Product");
+    document.getElementById("show-type").style.display = "none";
+    document.getElementById("show-size").style.display = "ône";
+
 }
 showUser = () => {
     document.getElementById("show-product").style.display = "none";
     document.getElementById("show-user").style.display = "block";
-
+    document.getElementById("show-type").style.display = "none";
+    document.getElementById("show-size").style.display = "none";
 }
 showType = () => {
     document.getElementById("show-product").style.display = "none";
