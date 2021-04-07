@@ -24,13 +24,19 @@ function deleteUser($key)
 }
 function deleteProduct($key)
 {
-    $query = "DELETE FROM PRODUCT
+    $query = "DELETE FROM [PRODUCT]
     WHERE id_product = $key";
-      $GLOBALS['connect']->query($query);
-   
+ $GLOBALS['connect']->query($query);
+ $query = "DELETE FROM [PRODUCT_SIZE]
+    WHERE id_product = $key";
+ $GLOBALS['connect']->query($query);
 }
 function reload($page){
     header("Refresh: 2 ; url=$page");
+}
+
+function deleteProductDetail($id){
+
 }
 // $key='teddy';
 // searchProduct($key);

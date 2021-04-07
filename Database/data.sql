@@ -38,25 +38,25 @@ insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
  ('TEDDY BEAR CREAM CAKE','2','image/gauTrauAoKe1.jpg','image/teddy4.jpg','image/teddy5.jpg',10,1);
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('TEDDY ANGEL PINK','2','image/teddyHong1.jpg1','image/teddyHong2.jpg','image/teddyHong3.jpg',10,1);
+ ('TEDDY ANGEL PINK','2','image/teddyHong1.jpg','image/teddyHong2.jpg','image/teddyHong3.jpg',10,1);
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
  ('TEDDY ANGEL PINK','2','image/td3_1.jpg','image/td3_2.jpg','image/td3_3.jpg',10,1);
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
  ('TEDDY','2','image/td4-1.jpg','image/td4-2.jpg','image/td4-3.jpg',10,1);
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('cute cat','3','image/meo2.jpg','image/meo4.jpg','image/meo5.jpg",',10,1);
+ ('cute cat','3','image/meo2.jpg','image/meo4.jpg','image/meo5.jpg',10,1);
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
  ('cute cat baby','3','image/smallCat1.jpg','image/smallCat2.jpg','image/smallCat3.jpg',10,1);
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('Black cat','3','image/blackCat.jpg','image/blackCat2.jpg','img3: "image/blackCat3.jpg',10,1);
+ ('Black cat','3','image/blackCat.jpg','image/blackCat2.jpg','image/blackCat3.jpg',10,1);
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
  ('Cute doremon','4','image/doremon1.jpg','image/bigDoremon.jpg','image/bigDoremon1.jpg',10,1);
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('Doremon baby','4','image/doremondai1.jpg','image/doremondai2.jpg','image/doremondai3.jpg",',10,1);
+ ('Doremon baby','4','image/doremondai1.jpg','image/doremondai2.jpg','image/doremondai3.jpg',10,1);
 insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('Cute doremon baby','4','image/doremontt1.jpg','image/doremontt2.jpg','image/doremontt3.jpg"',10,1);
+ ('Cute doremon baby','4','image/doremontt1.jpg','image/doremontt2.jpg','image/doremontt3.jpg',10,1);
 
-
+select * from product;
 create table SIZE (
 	id_size int primary key auto_increment,
 	name_size varchar(100)

@@ -10,6 +10,15 @@ a:hover {
     color: #f0cfc8;
 }
 
+.all-content {
+    background-image: url('../image/b-g.jpg');
+    background-repeat: no-repeat;
+}
+
+.all-content {
+    height: auto;
+}
+
 .search {
     border: 1px solid orange;
     border-radius: 10px;
@@ -27,16 +36,32 @@ a:hover {
 }
 
 .btn_update,
-.btn_detail {
-    border: orangered solid 1px;
+.btn_detail,
+#btn-add-product {
+    border: orangered solid 2px;
     background-color: #f0cfc8;
     color: orangered;
     border-radius: 3px;
     padding: 5px;
 }
 
+.btn-out {
+    border: rgb(255, 94, 0) solid 2px;
+    background-color: #f0cfc8;
+    color: rgb(255, 94, 0);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.btn-out:hover {
+    background-color: #f0cfc8;
+    ;
+    color: rgb(252, 2, 2);
+}
+
 .btn_update:hover,
-.btn_detail:hover {
+.btn_detail:hover,
+#btn-add-product:hover {
     background-color: orangered;
     color: white;
 }
@@ -119,6 +144,7 @@ a:hover {
     margin-left: 10px;
 }
 
-h5 {
+h5,
+h3 {
     color: #f7544a;
 }
