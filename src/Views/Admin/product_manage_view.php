@@ -45,7 +45,7 @@ session_start();
         <div class="form-create">
 
             <button class="btn btn-outline-danger" data-toggle="modal" data-target="#create-product">Create</button>
-       
+
         </div>
     </div>
     <!-- Modal -->
@@ -111,8 +111,8 @@ session_start();
 
                 if (isset($_POST['btn_search'])) {
 
-                    if ($_POST['search'] =="") {
-                        echo "<script>documenment.getEletById('error_search').innerHTML='Please fill here to search!'</script>";
+                    if ($_POST['search'] == "") {
+                        echo "<script>document.getElementById('error_search').innerHTML='Please fill here to search!'</script>";
                     } else {
                         $key = $_POST['search'];
                         $result = searchProduct($key);
@@ -152,26 +152,26 @@ session_start();
                             </div>
                         </td>
 
-                    <form action="" method="post">
-                    <td>
-                            <div class="form_group">
-                                <button name="btn_delete" class="btn_delete" data-toggle="modal" data-target="#delete-product">
-                                   Delete
-                                    <?php $_SESSION['id_product_delete'] = $product['id_product']; ?>
-                                </button>
-                            </div>
-                        </td>
+                        <form action="" method="post">
+                            <td>
+                                <div class="form_group">
+                                    <button name="btn_delete" class="btn_delete" data-toggle="modal" data-target="#delete-product">
 
-                        <td>
-                            <div class="form_group">
-                                <button name="btn_update" class="btn_update" data-toggle="modal" data-target="#btn-update">
-                                    Update
-                                    <?php $_SESSION['id_product_update'] = $product['id_product']; ?>
-                                </button>
-                            </div>
-                        </td>
-                    </form>
-                       
+                                        <a href="product_manage_view.php?id_delete=<?php echo $product['id_product']; ?>"> Delete</a>
+                                    </button>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="form_group">
+                                    <button name="btn_update" class="btn_update" data-toggle="modal" data-target="#btn-update">
+                                        Update
+                                        <?php $_SESSION['id_product_update'] = $product['id_product']; ?>
+                                    </button>
+                                </div>
+                            </td>
+                        </form>
+
                     </tr>
                 <?php
                 }
@@ -180,21 +180,18 @@ session_start();
             </tbody>
 
         </table>
-        <?php 
-        if(isset($_POST['btn_delete'])){
-            if(isset($_SESSION['id_product_delete'])){
-                $id=$_SESSION['id_product_delete'];
-                $query="DELETE FROM PRODUCT WHERE id_product=$id;";
-                $GLOBALS['connect']->query($query);
-                $query="DELETE FROM PRODUCT_SIZE  WHERE id_product=$id;";
-                $GLOBALS['connect']->query($query);
-                // echo "<script>location.reload();</script>";
-            }
+        <?php
+        if (isset($_GET['id_delete'])) {
+            $id = $_GET['id_delete'];
+            $query = "DELETE FROM PRODUCT WHERE id_product=$id;";
+            $GLOBALS['connect']->query($query);
+            $query = "DELETE FROM PRODUCT_SIZE  WHERE id_product=$id;";
+            $GLOBALS['connect']->query($query);
         }
-    
-        if(isset($_POST['update_product'])){
-            if(isset($_SESSION['id_product_update'])){
-                $id=$_SESSION['id_product_update'];
+
+        if (isset($_POST['update_product'])) {
+            if (isset($_SESSION['id_product_update'])) {
+                $id = $_SESSION['id_product_update'];
                 $type = $_POST['type_product'];
                 $name = $_POST['name_product'];
                 $size_product = $_POST['size_product'];
@@ -204,10 +201,9 @@ session_start();
                 $img_3 = $_POST['img_3_upload'];
                 $des = $_POST['decription'];
                 $quantity = $_POST['quantity'];
-             
             }
         }
-        
+
         ?>
         <!-- Phân trang -->
         <div class="pagination">
@@ -320,110 +316,137 @@ session_start();
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title title " id="exampleModalLabel">Detail Of This Product</h5>
+                    <h5 class="modal-title title " id="exampleModalLabel" style="color: red;">Detail Manage</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <!-- Hiển thị bản size giá và số lượng còn lại -->
-                    <?php
+                    <div class="css-modal">
+                        <?php
 
-                    $id = $_SESSION['id_product'];
-                    $query = "select * from PRODUCT_SIZE where $id =id_product";
-                    $result =  $GLOBALS['connect']->query($query);
+                        $id = $_SESSION['id_product'];
+                        // = "select * from PRODUCT_SIZE where $id =id_product";
+                         $query="SELECT PRODUCT_SIZE.id_size,PRODUCT_SIZE.id_product, SIZE.name_size, PRODUCT_SIZE.price, PRODUCT_SIZE.quantity
+                        FROM PRODUCT_SIZE
+                        INNER JOIN SIZE ON SIZE.id_size = PRODUCT_SIZE.id_size
+                          WHERE $id =id_product;";
+                        $result =  $GLOBALS['connect']->query($query);
 
-                    while ($product = mysqli_fetch_array($result)) {
-                        $size = $product['id_size'];
-                        $price = $product['price'];
-                        $quantity = $product['quantity'];
-                        echo "<strong>ID Size:</strong>  " . $size . "| Price:" . $price . "VND | The remaining amount: " . $quantity .
-                            "<br>";
-                    ?> <div class="spacer"> <br></div>
-                        
-                        <div class="spacer">
-                            <hr><br>
-                        </div>
-                    <?php
-                    }
+                        while ($product = mysqli_fetch_array($result)) {
+                            $size = $product['id_size'];
+                            $price = $product['price'];
+                            $quantity = $product['quantity'];
+                            echo "<strong>ID Size:</strong>  " . $product['id_size'] . " | Price:" . $price . "VND | The remaining amount: " . $quantity .
+                                "<br>";
+                        ?>
+                            <div class="detail-product-content">
+                                <label for=""> <Strong>ID Size:</Strong></label>
+                                <span><?php
+                                        echo $product['name_size'];
+                                        ?> </span>
+                                <label for=""> <Strong>Price:</Strong></label>
+                                <span><?php
+                                        echo $price;
+                                        ?> </span>
+                            </div>
+                            <div class="spacer"> <br></div>
+                                <div class="form_group">
+                                    <button name="btn_delete" class="btn_delete" data-toggle="modal" data-target="#delete-product">
 
-                    ?>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <a href="product_manage_view.php?id_delete=<?php echo $product['id_product']; ?>"> Delete</a>
+                                    </button>
+
+                                    <button name="btn_update" class="btn_update" data-toggle="modal" data-target="#btn-update">
+                                        Update
+                                        <?php $_SESSION['id_product_update'] = $product['id_product']; ?>
+                                    </button>
+                                </div>
+                                <div class="spacer">
+                                    <hr><br>
+                                </div>
+                            <?php
+                        }
+                            ?>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal Update -->
-    <div class="modal fade" id="btn-update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLable1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" class="form-row" method="POST" enctype="multipart/form-data">
+        <!-- Modal Update -->
+        <div class="modal fade" id="btn-update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLable1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" class="form-row" method="POST" enctype="multipart/form-data">
 
-                        <div class="col-12 mt-3">
-                            <input class="form-control" type="text" name="type_product" placeholder="Enter ID Type">
-                        </div>
-                        <br>
-                        <div class="col-12 mt-3">
-                            <input class="form-control" type="text" name="name_product" placeholder="Enter Name">
-                        </div>
-                        <br>
-                        <div class="col-12 mt-3">
-                            <label for="">Upload image-1 of product </label>
-                            <input class="form-control" type="file" name="img_1_upload" placeholder="Enter link 1">
-                        </div>
-                        <br>
-                        <div class="col-12 mt-3">
-                            <label for="">Upload image-2 of product </label>
-                            <input class="form-control" type="file" name="img_2_upload" placeholder="Enter link 2">
-                        </div>
-                        <br>
-                        <div class="col-12 mt-3">
-                            <label for="">Upload image-3 of product </label>
-                            <input class="form-control" type="file" name="img_3_upload" placeholder="Enter link 3">
-                        </div>
-                        <br>
-                        <div class="col-12 mt-3">
-                            <input class="form-control" type="text" name="size_product" placeholder="Enter ID size">
-                        </div>
-                        <br>
-                        <div class="col-12 mt-3">
-                            <input class="form-control" type="text" name="quantity" placeholder="Enter number of products remaining...">
-                        </div>
-                        <br>
-                        <div class="col-12 mt-3">
-                            <input class="form-control" type="text" name="price" placeholder="Enter Price">
-                        </div>
-                        <br>
-                        <div class="col-12 mt-3">
-                            <input class="form-control" type="text" name="decription" placeholder="Desciption">
-                        </div>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" name="type_product" placeholder="Enter ID Type">
+                            </div>
+                            <br>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" name="name_product" placeholder="Enter Name">
+                            </div>
+                            <br>
+                            <div class="col-12 mt-3">
+                                <label for="">Upload image-1 of product </label>
+                                <input class="form-control" type="file" name="img_1_upload" placeholder="Enter link 1">
+                            </div>
+                            <br>
+                            <div class="col-12 mt-3">
+                                <label for="">Upload image-2 of product </label>
+                                <input class="form-control" type="file" name="img_2_upload" placeholder="Enter link 2">
+                            </div>
+                            <br>
+                            <div class="col-12 mt-3">
+                                <label for="">Upload image-3 of product </label>
+                                <input class="form-control" type="file" name="img_3_upload" placeholder="Enter link 3">
+                            </div>
+                            <br>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" name="size_product" placeholder="Enter ID size">
+                            </div>
+                            <br>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" name="quantity" placeholder="Enter number of products remaining...">
+                            </div>
+                            <br>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" name="price" placeholder="Enter Price">
+                            </div>
+                            <br>
+                            <div class="col-12 mt-3">
+                                <input class="form-control" type="text" name="decription" placeholder="Desciption">
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
                         <button class="btn btn-outline-danger mt-3" type="submit" name="update_product" data-dismiss="modal">
-                        Update </button>    
-                    </form>
-                </div>
-                <div class="modal-footer">    
-                   
+                            Update </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

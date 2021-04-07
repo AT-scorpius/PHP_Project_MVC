@@ -54,7 +54,9 @@ a:hover {
     color: white;
 }
 
-#error_search {
+#error_search,
+#error_search_product,
+#error_search_user {
     color: red;
     margin-left: 15px;
 }

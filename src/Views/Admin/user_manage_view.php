@@ -129,13 +129,11 @@ $GLOBALS['connect']  = new ConnectDataBase();
                                 echo "<strong style='color: #f7544a;'>Deletion is not allowed!</strong>";
                             } else {
                             ?><div class="form_group">
-                                    <button name="btn_delete" class="btn_delete" id="delete_user" data-toggle="modal" data-target="#deleteUser">
+                                    <button name="btn_delete" class="btn_delete" id="delete_user">
                                         <?php
-                                        echo '<a  href="user_manage_view.php?id_user=' . $id_user . '">Delete</a>  ';
-
+                                       $_SESSION['id_user_delete'] = $product['id_user']; 
                                         ?>
                                 </div>
-
 
                             <?php  }
                             ?></td>
@@ -151,9 +149,9 @@ $GLOBALS['connect']  = new ConnectDataBase();
         <?php
         // Thao Tác Với Dữ Liệu
         //delete
-        if (isset($_POST['accept_delete'])) {
-            deleteUser($_GET['id_user']);
-            header("Refresh: 2;");
+        if (isset($_POST['btn_delete'])) {
+            if(!empty($_SESSION['id_user_delete']))
+            deleteUser($_SESSION['id_user_delete']);
         }
 
         ?>
@@ -185,28 +183,7 @@ $GLOBALS['connect']  = new ConnectDataBase();
             }
             ?>
         </div>
-        <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Do you really want to delete this user?
-                    </div>
-                    <div class="modal-footer">
-                        <form action="" method="post">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" name="accept_delete">Yes</button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+     
     </div>
 
 
