@@ -10,7 +10,7 @@ class Product
     {
         $connect = new ConnectDataBase();
         $sql='SELECT * FROM product INNER JOIN product_size 
-            ON product.id_product = product_size.id_product';
+            ON product.id_product = product_size.id_product where product_size.id_size = 1';
         return $connect->query($sql);
     } 
     public function GetOneListProduct($sqlk)

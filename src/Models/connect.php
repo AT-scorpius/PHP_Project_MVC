@@ -17,6 +17,7 @@
         $ketqua = mysqli_query($this->connect,$sql);
         return $ketqua;
          
-     }}
+     }
+   }
     
     ?> 
