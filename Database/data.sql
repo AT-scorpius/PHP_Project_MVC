@@ -25,36 +25,36 @@ create table PRODUCT (
     image3 varchar (200),
     sale double,
     like_product int,
-    descriptions varchar(30),
+    descriptions varchar(2000),
     foreign key (id_type_product) references TYPE_PRODUCT (id_type_product)
     );
 
-insert into PRODUCT (id_product,name_product,id_type_product,image1,image2,image3,sale,like_product )
- values(1, 'STRIPED BUFFALO SHIRT','1','image/gauTrauAoKe1.jpg','image/gauTrauAoKe2.jpg','image/gauTrauAoKe3.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values 
-('BUFFALO NECK PILLOWS','1','image/gauCoTrau.jpg','image/gauCoTrau2.jpg','image/gauCoTrau3.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ( 'Dinosaur teddy bear','1','image/khungLong1.jpg','image/khungLong2.jpg','image/khungLong3.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('TEDDY BEAR CREAM CAKE','2','image/gauTrauAoKe1.jpg','image/teddy4.jpg','image/teddy5.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('TEDDY ANGEL PINK','2','image/teddyHong1.jpg','image/teddyHong2.jpg','image/teddyHong3.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('TEDDY ANGEL PINK','2','image/td3_1.jpg','image/td3_2.jpg','image/td3_3.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('TEDDY','2','image/td4-1.jpg','image/td4-2.jpg','image/td4-3.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('cute cat','3','image/meo2.jpg','image/meo4.jpg','image/meo5.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('cute cat baby','3','image/smallCat1.jpg','image/smallCat2.jpg','image/smallCat3.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('Black cat','3','image/blackCat.jpg','image/blackCat2.jpg','image/blackCat3.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('Cute doremon','4','image/doremon1.jpg','image/bigDoremon.jpg','image/bigDoremon1.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('Doremon baby','4','image/doremondai1.jpg','image/doremondai2.jpg','image/doremondai3.jpg',10,1);
-insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product ) values
- ('Cute doremon baby','4','image/doremontt1.jpg','image/doremontt2.jpg','image/doremontt3.jpg',10,1);
+insert into PRODUCT (id_product,name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions )
+ values(1, 'STRIPED BUFFALO SHIRT','1','image/gauTrauAoKe1.jpg','image/gauTrauAoKe2.jpg','image/gauTrauAoKe3.jpg',10,1,'Chất liệu rất thoáng mát');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values 
+('BUFFALO NECK PILLOWS','1','image/gauCoTrau.jpg','image/gauCoTrau2.jpg','image/gauCoTrau3.jpg',10,5,'phù hợp mọi lứa tuổi');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ( 'DINOSAUR TEDDY BEAR','1','image/khungLong1.jpg','image/khungLong2.jpg','image/khungLong3.jpg',10,60,'ôm là yêu');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('TEDDY BEAR CREAM CAKE','2','image/gauTrauAoKe1.jpg','image/teddy4.jpg','image/teddy5.jpg',10,98,'Chất liệu rất thoáng mát');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('TEDDY ANGEL PINK','2','image/teddyHong1.jpg','image/teddyHong2.jpg','image/teddyHong3.jpg',10,18,'Chất liệu rất thoáng mát');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('TEDDY ANGEL PINK','2','image/td3_1.jpg','image/td3_2.jpg','image/td3_3.jpg',10,44,'Chất liệu rất thoáng mát');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('TEDDY','2','image/td4-1.jpg','image/td4-2.jpg','image/td4-3.jpg',10,59,'phù hợp mọi lứa tuổi');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('CUTE CAT','3','image/meo2.jpg','image/meo4.jpg','image/meo5.jpg',10,355,'Chất liệu rất thoáng mát');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('CUTE CAT BABY','3','image/smallCat1.jpg','image/smallCat2.jpg','image/smallCat3.jpg',10,1,'phù hợp mọi lứa tuổi');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('BLACK CAT','3','image/blackCat.jpg','image/blackCat2.jpg','image/blackCat3.jpg',10,109,'phù hợp mọi lứa tuổi');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('CUTE DORAEMON','4','image/doremon1.jpg','image/bigDoremon.jpg','image/bigDoremon1.jpg',10,896,'Chất liệu rất thoáng mát');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('DORAEMON CUTE','4','image/doremondai1.jpg','image/doremondai2.jpg','image/doremondai3.jpg',10,9,'phù hợp mọi lứa tuổi');
+insert into PRODUCT (name_product,id_type_product,image1,image2,image3,sale,like_product,descriptions ) values
+ ('CUTE DORAEMON BABY','4','image/doremontt1.jpg','image/doremontt2.jpg','image/doremontt3.jpg',10,119,'Chất liệu rất thoáng mát');
 
 select * from product;
 create table SIZE (
