@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping cart</title>
+
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="container"> 
+<form id="cart-form" action="cart.php?action=submit" method="POST">
+ <table id="cart" class="table table-hover table-condensed"> 
+  <!-- <thead>  -->
+   <tr> 
+    <th class="product-number">STT</th>
+    <th class="product-name">Name product</th>
+    <th class="product-img">Image</th>
+    <th class="product-price">Price</th>
+    <th class="product-quantity">Quantity</th>
+    <th class="product-money">Caculator money</th>
+    <th class="product-delete">Delete</th>
+    </tr>
+   </tr> 
+   <tr id="row-total"> 
+        <td style="width:50%">&nbsp;</td> 
+        <td style="width:20%">Total price</td> 
+        <td style="width:50%">&nbsp;</td> 
+        <td style="width:20%">&nbsp;</td> 
+        <td style="width:20%">&nbsp;</td> 
+        <td style="width:22%" class="text-center">Total</td> 
+        <td style="width:50%">Delete product</td> 
+        <td style="width:10%"> </td> 
+   </tr> 
+    </table>
+    <div id="form-button">
+        <input type="submit" name="update" value="Update product"/>
+    </div>
+    <hr>
+    <div><label>Người nhận:</label><input type="text" value="" name="name"></div>
+    <div><label>Điện thoại:</label><input type="text" value="" name="name"></div>
+    <div><label>Địa chỉ:</label><input type="text" value="" name="name"></div>
+    <div><label>Email:</label><input type="text" value="" name="name"></div>
+    <input type="submit" name="order" value="Đặt hàng">
+    
+  </form>
+</div>
+</body>
+</html>
